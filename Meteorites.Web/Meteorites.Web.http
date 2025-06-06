@@ -1,0 +1,6 @@
+@Meteorites.Web_HostAddress = http://localhost:5117
+
+GET {{Meteorites.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
