@@ -4,6 +4,6 @@
     {
         public int Year { get; set; }
         public int Count { get; set; }
-        public int TotalMass { get; set; }
+        public double TotalMass { get; set; }
     }
 }

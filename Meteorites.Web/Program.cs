@@ -1,18 +1,32 @@
 using Meteorites.Business.Services;
 using Meteorites.DataAccess;
+using Meteorites.DataAccess.Repositories;
+using Meteorites.Infrastructure.ExternalClients;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddHostedService<MeteoriteLoadService>();
+var services = builder.Services;
 
-builder.Services.AddDbContext<MeteoriteDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+services.AddCors(options => options.AddDefaultPolicy(policy => policy.AllowAnyOrigin()));
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+services.AddDbContext<MeteoriteDbContext>(options =>
+    options.UseInMemoryDatabase("Meteorites"));
+
+services.AddAutoMapper(typeof(MeteoriteService).Assembly);
+services.AddHostedService<MeteoriteLoadService>();
+services.AddHttpClient();
+services.AddMemoryCache();
+
+services.AddSingleton<ICacheService, CacheService>();
+
+services.AddScoped<IMeteoriteRepository, MeteoriteRepository>();
+services.AddScoped<IMeteoriteService, MeteoriteService>();
+services.AddScoped<IMeteoriteExternalClient, MeteoriteExternalClient>();
+
+services.AddControllers();
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -23,8 +37,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseCors();
 
 app.MapControllers();
 

@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+.meteorite-table {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .meteorite-table__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    align-items: flex-end;
+  }
+  
+  .meteorite-table__filter-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+  }
+  
+  .meteorite-table__filter-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+.meteorite-table__dates-fieldset {
+  display: flex;
+  gap: 20px;
+}
+
+  .meteorite-table__filter-group select, 
+  .meteorite-table__filter-group input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .meteorite-table__reset-button {
+    padding: 8px 15px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    height: fit-content;
+  }
+  
+  .meteorite-table__reset-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .meteorite-table__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .meteorite-table__table th, 
+  .meteorite-table__table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .meteorite-table__table th {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .meteorite-table__table th:hover {
+    background-color: #45a049;
+  }
+  
+  .meteorite-table__table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .meteorite-table__table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .meteorite-table__loading {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .meteorite-table__error {
+    color: #f44336;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+  }

@@ -5,15 +5,15 @@ using Microsoft.AspNetCore.Mvc;
 namespace Meteorites.Web.Controllers
 {
     [ApiController]
-    [Route("api/meteorites")]
-    public class MeteoriteController(MeteoriteService meteoriteService) : ControllerBase
+    [Route("api")]
+    public class MeteoriteController(IMeteoriteService meteoriteService) : ControllerBase
     {
-        [HttpGet]
-        public async Task<IActionResult> GetMeteorites([FromQuery] Filter filter, OrderingOptions orderingOptions)
+        [HttpGet("meteorites")]
+        public async Task<ActionResult<IReadOnlyList<MeteoriteCompositionData>>> GetMeteorites([FromQuery] Filter filter, [FromQuery]OrderingOptions orderingOptions)
         {
             try
             {
-                var meteorites = meteoriteService.GetMeteoritesData(filter, orderingOptions);
+                var meteorites = await meteoriteService.GetMeteoritesData(filter, orderingOptions);
 
                 return Ok(meteorites);
             }
@@ -24,6 +24,42 @@ namespace Meteorites.Web.Controllers
                 return StatusCode(500);
             }
            
+        }
+
+        [HttpGet("rec-classes")]
+        public async Task<ActionResult<IReadOnlyList<string>>> GetRecClasses()
+        {
+            try
+            {
+                var classes = await meteoriteService.GetRecClasses();
+
+                return Ok(classes);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected Controller Error: {ex.Message}");
+
+                return StatusCode(500);
+            }
+
+        }
+
+        [HttpGet("years")]
+        public async Task<ActionResult<IReadOnlyList<int>>> GetYears()
+        {
+            try
+            {
+                var years = await meteoriteService.GetYears();
+
+                return Ok(years);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected Controller Error: {ex.Message}");
+
+                return StatusCode(500);
+            }
+
         }
     }
 }

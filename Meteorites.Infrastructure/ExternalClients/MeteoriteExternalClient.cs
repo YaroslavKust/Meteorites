@@ -21,7 +21,7 @@ public class MeteoriteExternalClient(HttpClient httpClient) : IMeteoriteExternal
         }
         catch (JsonException jsonException)
         {
-            Console.WriteLine("Deserealizing Error: {jsonException.Message}");
+            Console.WriteLine($"Deserealizing Error: {jsonException.Message}");
         }
 
         return null;

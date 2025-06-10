@@ -6,5 +6,8 @@ namespace Meteorites.Business.Services
     {
         Task<IReadOnlyList<MeteoriteCompositionData>> GetMeteoritesData(Filter filter, OrderingOptions orderingOptions);
         Task UpdateMeteorites();
+
+        Task<IReadOnlyList<string>> GetRecClasses();
+        Task<IReadOnlyList<int>> GetYears();
     }
 }

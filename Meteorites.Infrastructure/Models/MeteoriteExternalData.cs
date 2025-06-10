@@ -9,7 +9,7 @@ public class MeteoriteExternalData
     public string Name { get; set; }
     public string NameType { get; set; }
     public string RecClass { get; set; }
-    public int Mass { get; set; }
+    public double Mass { get; set; }
     public string Fall { get; set; }
     public DateTime Year { get; set; }
 
@@ -22,8 +22,8 @@ public class MeteoriteExternalData
     public GeoLocation Geolocation { get; set; }
 
     [JsonPropertyName(":@computed_region_cbhk_fwbd")]
-    public string ComputedRegionCbhkFwbd { get; set; }
+    public string? ComputedRegionCbhkFwbd { get; set; }
 
     [JsonPropertyName(":@computed_region_nnqa_25f4")]
-    public string ComputedRegionNnqa25F4 { get; set; }
+    public string? ComputedRegionNnqa25F4 { get; set; }
 }
